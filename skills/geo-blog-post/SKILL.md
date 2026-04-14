@@ -43,8 +43,8 @@ Recommended top-to-bottom order:
 5. Hero image with descriptive alt text
 6. Table of contents (generated from headings)
 7. Body
-8. **FAQ section** — rendered as accordion or static; must also appear in schema
-9. CTA
+8. CTA
+9. **FAQ section** — rendered as accordion or static; must also appear in schema
 10. Author bio with credentials (strengthens E-E-A-T signal)
 
 ## Article Targets
@@ -108,7 +108,7 @@ One per post. Place in the middle of the post — around the 3rd H2 — after a 
 
 ## CTA Block
 
-Every post ends with a CTA before the author bio. The default CTA for cite.me.in posts:
+Every post ends with a CTA before the FAQ. For example, the CTA for cite.me.in posts:
 
 - **Heading:** "Monitor your AI citation visibility"
 - **Primary button:** "Start free trial" → `https://cite.me.in/sign-up`
@@ -126,10 +126,10 @@ The blog auto-generates these from frontmatter. If adding manually, use these JS
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://blog.cite.me.in/SLUG" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://cite.me.in/SLUG" },
   "headline": "Post Title",
   "description": "1–2 sentence summary",
-  "image": "https://blog.cite.me.in/images/YYYY-MM-DD-slug.png",
+  "image": "https://cite.me.in/images/YYYY-MM-DD-slug.png",
   "datePublished": "2026-04-13T00:00:00Z",
   "dateModified": "2026-04-13T00:00:00Z",
   "author": { "@type": "Person", "name": "Author Name", "url": "https://example.com" },
@@ -137,7 +137,7 @@ The blog auto-generates these from frontmatter. If adding manually, use these JS
     "@type": "Organization",
     "name": "cite.me.in",
     "url": "https://cite.me.in",
-    "logo": { "@type": "ImageObject", "url": "https://blog.cite.me.in/icon-192.png" }
+    "logo": { "@type": "ImageObject", "url": "https://cite.me.in/icon.png" }
   }
 }
 ```
@@ -168,8 +168,8 @@ The blog auto-generates these from frontmatter. If adding manually, use these JS
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Blog", "item": "https://blog.cite.me.in/" },
-    { "@type": "ListItem", "position": 2, "name": "Post Title", "item": "https://blog.cite.me.in/SLUG" }
+    { "@type": "ListItem", "position": 1, "name": "Blog", "item": "https://cite.me.in/" },
+    { "@type": "ListItem", "position": 2, "name": "Post Title", "item": "https://cite.me.in/SLUG" }
   ]
 }
 ```
