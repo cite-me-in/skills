@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-04-29T00:00:00Z",
+  "skills": [
+    {
+      "name": "laws-of-ux",
+      "description": "Apply evidence-based UX psychology laws when building web applications — all 30 laws from lawsofux.com with code examples, anti-patterns, and a UX review checklist",
+      "source": "cite-me-in/skills/skills/laws-of-ux",
+      "skill": "laws-of-ux",
+      "tags": ["ux", "design", "frontend", "psychology", "web"]
+    },
+    {
+      "name": "geo-blog-post",
+      "description": "Use when writing or editing a blog post optimized for AI citations — covers post structure, frontmatter patterns, content rules, schema requirements, and a pre-publish GEO checklist based on Princeton research. Do NOT use for social media posts, landing pages, general content writing, or non-blog formats.",
+      "source": "cite-me-in/skills/skills/geo-blog-post",
+      "skill": "geo-blog-post",
+      "tags": ["blog", "ai", "citations", "princeton"]
+    }
+  ]
+}
