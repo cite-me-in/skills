@@ -1,20 +1,23 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-04-29T00:00:00Z",
+  "generatedAt": "2026-04-30T00:24:28Z",
+  "sourcePath": "./skills",
   "skills": [
-    {
-      "name": "laws-of-ux",
-      "description": "Apply evidence-based UX psychology laws when building web applications — all 30 laws from lawsofux.com with code examples, anti-patterns, and a UX review checklist",
-      "source": "cite-me-in/skills/skills/laws-of-ux",
-      "skill": "laws-of-ux",
-      "tags": ["ux", "design", "frontend", "psychology", "web"]
-    },
     {
       "name": "geo-blog-post",
       "description": "Use when writing or editing a blog post optimized for AI citations — covers post structure, frontmatter patterns, content rules, schema requirements, and a pre-publish GEO checklist based on Princeton research. Do NOT use for social media posts, landing pages, general content writing, or non-blog formats.",
-      "source": "cite-me-in/skills/skills/geo-blog-post",
-      "skill": "geo-blog-post",
-      "tags": ["blog", "ai", "citations", "princeton"]
+      "source": "geo-blog-post",
+      "riskScore": 0,
+      "riskLabel": "clean",
+      "auditedAt": "2026-04-30T00:24:28Z"
+    },
+    {
+      "name": "laws-of-ux",
+      "description": "Apply evidence-based UX psychology laws when building web applications and interfaces. Use this skill whenever designing or reviewing UI/UX for web apps, dashboards, landing pages, forms, navigation systems, or any user-facing interface. Also triggers on: 'UX review', 'usability', 'user experience design', 'make this more usable', 'improve UX', 'UX patterns', 'interface design', 'is this good UX', 'accessibility and usability', or any mention of specific UX laws (Fitts's Law, Hick's Law, Jakob's Law, etc.).",
+      "source": "laws-of-ux",
+      "riskScore": 9,
+      "riskLabel": "low",
+      "auditedAt": "2026-04-30T00:24:28Z"
     }
   ]
 }
