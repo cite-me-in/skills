@@ -11,48 +11,31 @@ description: "Apply evidence-based UX psychology laws when building web applicat
 
 ## How This Skill Works
 
-When activated, follow this workflow — **don't dump all 30 laws**:
+### Mode A: Quick Question (one law, yes/no fix)
 
-### Step 1: Understand Context
+User asks: *"Is this button big enough?"* / *"Should I add another nav item?"*
 
-Ask (or infer): What is being built or reviewed?
+1. Read **Quick Reference** table → find the relevant law(s)
+2. Read **that law's detail section only**
+3. Answer directly: principle + ✅/❌ verdict + one concrete suggestion
+4. Skip everything else (routing, conflicts, scripts, checklist)
 
-| If they're building... | Start here |
-|---|---|
-| A **form** (signup, checkout, settings) | Section: Forms & Input |
-| A **dashboard** or data-heavy page | Section: Dashboards & Data |
-| A **landing page** or marketing page | Section: Landing Pages & Conversion |
-| A **mobile** or touch-first app | Section: Mobile & Touch |
-| A **navigation** system / information architecture | Section: Navigation & IA |
-| Doing a **general UX review** | Run the Prioritized Checklist below |
+### Mode B: Full Review / Design Session
 
-### Step 2: Select 3–7 Relevant Laws
+User asks: *"Review my dashboard"* / *"Help me design a checkout flow"*
 
-Use the context table above + the Quick Reference to pick laws that apply. **Ignore the rest.** Loading all 30 laws into every response wastes tokens and overwhelms the user.
-
-### Step 3: Give Specific Feedback
-
-For each selected law:
-- Quote the **one-line principle**
-- Point to **their actual code/UI** (if available)
-- Show a **concrete fix** (code diff, CSS change, layout suggestion)
-- Flag **severity**: 🔴 Critical / 🟡 Important / 🔵 Nice-to-have
-
-### Step 4: Call Out Conflicts
-
-If two laws tension against each other (e.g., "make everything big" vs "make one thing stand out"), consult the **[When Laws Conflict](#when-laws-conflict)** section.
-
-### Step 5: Offer Stakeholder Scripts (optional)
-
-If the user needs to defend a decision to a team/PM/client, pull from the **[Stakeholder Communication](#stakeholder-communication)** section.
+1. **Understand context** — what's being built? (Use Context Routing below)
+2. **Select 3–7 relevant laws** from routing table + Quick Reference
+3. **Give specific feedback** per law: principle → their code/UI → concrete fix → severity (🔴🟡🔵)
+4. **Check conflicts** between selected laws → [When Laws Conflict](#when-laws-conflict)
+5. **Output prioritized findings list** using [Review Workflow](#review-workflow)
+6. **Stakeholder scripts** (optional) — if user needs to defend decisions → [Stakeholder Communication](#stakeholder-communication)
 
 ---
 
 ## Context Routing: What You're Building → Which Laws Matter
 
 ### Forms & Input (signup, checkout, settings, search)
-
-**Priority order:**
 
 | Priority | Law | Why |
 |---|---|---|
@@ -62,945 +45,892 @@ If the user needs to defend a decision to a team/PM/client, pull from the **[Sta
 | 🟡 Important | Miller's Law | ~7 fields per step max |
 | 🟡 Important | Tesler's Law | Smart defaults absorb complexity |
 | 🟡 Important | Fitts's Law | Touch targets ≥ 44px; adequate spacing |
-| 🔵 Nice-to-have | Von Restorff Effect | Primary CTA stands out from secondary actions |
-| 🔵 Nice-to-have | Peak-End Rule | Success state is delightful, not abrupt |
+| 🔵 Nice-to-have | Von Restorff Effect | Primary CTA stands out |
+| 🔵 Nice-to-have | Peak-End Rule | Success state is delightful |
 
-**Common form anti-pattern:** A wall of 15+ fields, strict input formatting, no inline validation, identical-looking Submit/Cancel buttons.
+**Common anti-pattern:** Wall of 15+ fields, strict input formatting, no inline validation, identical Submit/Cancel.
 
 ---
 
 ### Dashboards & Data-Dense Pages
 
-**Priority order:**
-
 | Priority | Law | Why |
 |---|---|---|
-| 🔴 Critical | Cognitive Load | One concept per screen; remove decorative noise |
-| 🔴 Critical | Chunking | Group metrics into cards/sections; use headings |
-| 🔴 Critical | Law of Proximity | Related items close together; groups loosely spaced |
-| 🟡 Important | Law of Similarity | Same kind of metric = same visual treatment |
+| 🔴 Critical | Cognitive Load | One concept per screen; kill decorative noise |
+| 🔴 Critical | Chunking | Group metrics into cards/sections with headings |
+| 🔴 Critical | Law of Proximity | Related items close; groups loosely spaced |
+| 🟡 Important | Law of Similarity | Same metric type = same visual treatment |
 | 🟡 Important | Law of Common Region | Cards/panels create clear boundaries |
-| 🟡 Important | Miller's Law | ~7 chunks visible at once; paginate/filter rest |
-| 🟡 Important | Selective Attention | Users ignore off-goal info; put key metrics in their scan path |
-| 🔵 Nice-to-have | Goal-Gradient Effect | Progress bars toward goals/completions |
-| 🔵 Nice-to-have | Serial Position Effect | Most important metric first (or last) |
+| 🟡 Important | Miller's Law | ~7 chunks visible; paginate/filter rest |
+| 🟡 Important | Selective Attention | Put key metrics in user's goal-path |
+| 🔵 Nice-to-have | Goal-Gradient Effect | Progress bars toward goals |
 
-**Common dashboard anti-pattern:** 50 metrics in a flat grid, no grouping, no visual hierarchy, everything competing for attention.
+**Common anti-pattern:** 50 metrics flat grid, no grouping, no hierarchy, everything competing.
 
 ---
 
 ### Landing Pages & Conversion Flows
 
-**Priority order:**
-
 | Priority | Law | Why |
 |---|---|---|
-| 🔴 Critical | Von Restorff Effect | CTA pops; one standout element per screen |
+| 🔴 Critical | Von Restorff Effect | CTA pops; one standout per screen |
 | 🔴 Critical | Jakob's Law | Conventional patterns reduce friction |
-| 🟡 Important | Aesthetic-Usability Effect | First impression in ~50ms; polish = perceived quality |
-| 🟡 Important | Goal-Gradient Effect | Social proof, progress indicators, urgency |
-| 🟡 Important | Peak-End Rule | Strong finish to the conversion flow |
+| 🟡 Important | Aesthetic-Usability Effect | First impression ~50ms; polish = perceived quality |
+| 🟡 Important | Peak-End Rule | Strong finish to conversion flow |
 | 🟡 Important | Cognitive Bias (ethical) | Anchoring, social proof, smart defaults |
 | 🔵 Nice-to-have | Hick's Law | Remove nav clutter on landing pages |
 | 🔵 Nice-to-have | Choice Overload | 1-3 CTAs, not 8 |
 
-**Common landing page anti-pattern:** 5 equally-weighted buttons, generic stock feel, no clear next step, weak end-state.
+**Common anti-pattern:** 5 equally-weighted buttons, generic feel, no clear next step, weak end-state.
 
 ---
 
 ### Mobile & Touch Interfaces
 
-**Priority order:**
-
 | Priority | Law | Why |
 |---|---|---|
-| 🔴 Critical | Fitts's Law | Thumb zones; 44px minimum targets; edge placement |
+| 🔴 Critical | Fitts's Law | Thumb zones; 44px min targets; edge placement |
 | 🔴 Critical | Doherty Threshold | Touch feedback < 100ms; optimistic actions |
-| 🔴 Critical | Hick's Law | Reduce choices; progressive disclosure is mandatory on small screens |
-| 🟡 Important | Cognitive Load | Screen real estate is precious — every pixel must earn its place |
-| 🟡 Important | Law of Proximity | Tight grouping; touch targets must not be accidentally adjacent |
-| 🟡 Important | Zeigarnik Effect | Progress visible; multi-step flows show completion % |
-| 🔵 Nice-to-have | Aesthetic-Usability | Touch interfaces are intimate — polish matters more |
-| 🔵 Nice-to-have | Flow | Minimize interruptions; full-screen modes for focus tasks |
+| 🔴 Critical | Hick's Law | Progressive disclosure is mandatory on small screens |
+| 🟡 Important | Cognitive Load | Every pixel must earn its place |
+| 🟡 Important | Law of Proximity | Touch targets must not be accidentally adjacent |
+| 🟡 Important | Zeigarnik Effect | Progress visible; multi-step shows % |
+| 🔵 Nice-to-have | Aesthetic-Usability | Touch = intimate; polish matters more |
+| 🔵 Nice-to-have | Flow | Minimize interruptions; fullscreen focus modes |
 
-**Common mobile anti-pattern:** Tiny tap targets crammed together, no touch feedback, desktop layout squished onto phone.
+**Common anti-pattern:** Tiny tap targets crammed together, no touch feedback, desktop squished onto phone.
 
 ---
 
 ### Navigation & Information Architecture
 
-**Priority order:**
-
 | Priority | Law | Why |
 |---|---|---|
-| 🔴 Critical | Jakob's Law | Conventional patterns; users know how nav works already |
-| 🔴 Critical | Hick's Law | 5–7 top-level items max; group the rest |
-| 🟡 Important | Law of Proximity | Nav items grouped; labels close to their content |
-| 🟡 Important | Mental Model | Match user's mental map of where things should live |
-| 🟡 Important | Serial Position Effect | Most-used item first; account/profile last |
-| 🔵 Nice-to-have | Law of Uniform Connectedness | Breadcrumbs, step indicators show sequence |
-| 🔵 Nice-to-have | Selection Attention | Current page/state clearly distinguished |
+| 🔴 Critical | Jakob's Law | Conventional patterns; users know nav already |
+| 🔴 Critical | Hick's Law | 5–7 top-level items max; group rest |
+| 🟡 Important | Mental Model | Match user's mental map of where things live |
+| 🟡 Important | Serial Position Effect | Most-used first; account/profile last |
+| 🔵 Nice-to-have | Uniform Connectedness | Breadcrumbs, step indicators show sequence |
+| 🔵 Nice-to-have | Selective Attention | Current page clearly distinguished |
 
-**Common navigation anti-pattern:** 15+ top-level items, non-standard icons without labels, inconsistent hierarchy.
+**Common anti-pattern:** 15+ top-level items, non-standard icons without labels, inconsistent hierarchy.
 
 ---
 
-## Quick Reference: All 30 Laws at a Glance
+## Quick Reference: All 30 Laws
 
 | # | Law | One-Line Summary |
 |---|---|---|
-| 1 | **Fitts's Law** | Target acquisition time = f(distance, size). Make buttons big and close. |
-| 2 | **Doherty Threshold** | Respond < 400ms or lose attention. Optimistic UI, instant feedback. |
+| 1 | **Fitts's Law** | Target time = f(distance, size). Make buttons big and close. |
+| 2 | **Doherty Threshold** | Respond < 400ms. Optimistic UI, instant feedback. |
 | 3 | **Hick's Law** | More choices = slower decisions. Progressive disclosure. |
-| 4 | **Jakob's Law** | Users spend most time on other sites. Use conventions they already know. |
-| 5 | **Mental Model** | Design for how users *think* your system works, not just how it does. |
-| 6 | **Paradox of Active User** | Nobody reads docs. Make it work immediately; help contextually. |
-| 7 | **Law of Proximity** | Near items = related items. Spacing creates groups. |
-| 8 | **Law of Similarity** | Same look = same kind. Visual consistency signals relationship. |
+| 4 | **Jakob's Law** | Users know other sites better than yours. Use conventions. |
+| 5 | **Mental Model** | Design for how users THINK it works, not just how it does. |
+| 6 | **Paradox of Active User** | Nobody reads docs. Make it work immediately. |
+| 7 | **Law of Proximity** | Near items = related. Spacing creates groups. |
+| 8 | **Law of Similarity** | Same look = same kind. Visual consistency = relationship signal. |
 | 9 | **Law of Common Region** | Shared boundary = shared group. Cards, panels, containers. |
 | 10 | **Law of Uniform Connectedness** | Connected elements = related. Lines, breadcrumbs, borders. |
-| 11 | **Law of Prägnanz** | People interpret complex things as simply as possible. Reduce noise. |
-| 12 | **Von Restorff Effect** | The odd one out gets remembered. One standout element per screen. |
-| 13 | **Selective Attention** | Users ignore off-goal content. Design for their current task. |
+| 11 | **Law of Prägnanz** | Complex → interpreted as simplest form. Reduce noise. |
+| 12 | **Von Restorff Effect** | Odd one out remembered best. One standout per screen. |
+| 13 | **Selective Attention** | Ignore off-goal content. Design for current task. |
 | 14 | **Miller's Law** | Working memory holds 7±2 items. Limit options per view. |
-| 15 | **Cognitive Load** | Mental effort to understand your UI. Minimize extraneous load. |
+| 15 | **Cognitive Load** | Mental effort to understand UI. Kill extraneous load. |
 | 16 | **Chunking** | Break info into meaningful groups. Headings, cards, sections. |
-| 17 | **Working Memory** | Temporary task memory. Show state; persist drafts; never hide context. |
-| 18 | **Serial Position Effect** | First and last items remembered best. Put important stuff at edges. |
-| 19 | **Aesthetic-Usability Effect** | Pretty = feels more usable. Polish isn't optional. |
-| 20 | **Peak-End Rule** | Judged by peak emotion + final moment. Design both deliberately. |
-| 21 | **Zeigarnik Effect** | Incomplete tasks stick in memory. Show progress; drive completion. |
-| 22 | **Goal-Gradient Effect** | Closer to goal = more motivated. Accelerate perceived progress near end. |
-| 23 | **Flow** | Immersed focus state. Match challenge to skill; remove friction. |
-| 24 | **Cognitive Bias** | Systematic thinking errors. Design for bias ethically; avoid dark patterns. |
+| 17 | **Working Memory** | Temporary task memory. Show state; persist drafts. |
+| 18 | **Serial Position Effect** | First and last remembered best. Edges matter. |
+| 19 | **Aesthetic-Usability Effect** | Pretty = feels usable. Polish is functional. |
+| 20 | **Peak-End Rule** | Judged by peak emotion + final moment. Design both. |
+| 21 | **Zeigarnik Effect** | Incomplete tasks remembered better. Show progress. |
+| 22 | **Goal-Gradient Effect** | Closer to goal = more motivated. Accelerate near end. |
+| 23 | **Flow** | Immersed focus. Match challenge to skill; remove friction. |
+| 24 | **Cognitive Bias** | Systematic thinking errors. Design ethically; avoid dark patterns. |
 | 25 | **Choice Overload** | Too many options = paralysis. Curate; recommend default. |
-| 26 | **Tesler's Law** | Complexity can't be eliminated, only moved. Absorb it in code, not UI. |
-| 27 | **Postel's Law** | Accept messy input; send clean output. Be liberal in, conservative out. |
-| 28 | **Occam's Razor** | Simplest solution wins. Fewer assumptions, fewer concepts to learn. |
-| 29 | **Parkinson's Law** | Work expands to fill time. Design for speed; auto-save; shortcuts. |
-| 30 | **Working Memory** *(see #17)* | — |
+| 26 | **Tesler's Law** | Complexity can't die, only move. Absorb in code, not UI. |
+| 27 | **Postel's Law** | Liberal in what you accept, conservative in what you send. |
+| 28 | **Occam's Razor** | Simplest solution wins. Fewest assumptions. |
+| 29 | **Parkinson's Law** | Work expands to fill time. Design for speed. |
+
+> *Note: Working Memory (#17) and Miller's Law (#14) are closely related. Chunking (#16) is the primary technique for both.*
 
 ---
 
 ## The Laws (Detailed Reference)
 
-> **Read these on-demand** when you've selected relevant laws for the user's context. Don't present them all at once.
+> **Read on-demand** after selecting relevant laws from context routing or Quick Reference. Don't present all at once.
 
 ---
 
-### CATEGORY 1: Interaction & Performance
-
 ## 1. Fitts's Law
-> *The time to acquire a target is a function of the distance to and size of the target.*
+> *Target acquisition time = f(distance, size).*
 
-**Core rules:**
-- Touch/click targets **≥ 44×44px** (iOS HIG) or **48×48px** (Material). Never below 32px.
-- Place primary actions in **easy-reach areas**: top-left, center-screen, or fixed bars at **screen edges** (edges = effectively infinite target size).
-- **Destructive actions far from frequent actions** — leverage Fitts's as safety mechanism.
-- Group sequential controls closely to minimize cursor/thumb travel distance.
+**Rules:** Targets ≥ **44×44px** (iOS) / **48×48px** (Material). Never < 32px. Place primaries in easy-reach areas (top-left, center, screen edges — edges are effectively infinite). Destructive actions far from frequent ones (leverage Fitts's as safety).
+
+**Mobile thumb zones:** Bottom-left/right = natural grip (green zone). Top-center = hardest reach (red zone). Put primary actions green, destructive red.
 
 ```css
-/* ✅ Good */
-.action-button {
-  min-width: 44px;
-  min-height: 44px;
-  padding: 12px 24px;
-  margin: 8px;
-}
-
-/* ❌ Bad */
-.tiny-btn { height: 20px; padding: 2px 6px; margin: 2px; }
+/* ✅ */ .btn { min-width: 44px; min-height: 44px; padding: 12px 24px; margin: 8px; }
+/* ❌ */ .tiny { height: 20px; padding: 2px 6px; margin: 2px; }
 ```
 
-**Mobile thumb zones:** Bottom-left/right corners for phones (natural grip). Top-center is hardest to reach. Place primary actions in the green zone, destructive in the red (hard-to-reach) zone.
+**Anti-patterns:** Close buttons < 16px, dense icon toolbars without labels, dropdowns with tiny hit areas.
 
-**Anti-patterns:** Close buttons < 16px, dense icon toolbars without labels, dropdowns with tiny hit areas, primary actions in hard-to-reach corners on mobile.
+**Validate:** Track misclick rate on small targets. Heatmap tap density. If > 3% of taps miss, enlarge.
 
 ---
 
 ## 2. Doherty Threshold
-> *Productivity soars when computer and human interact at < 400ms — neither waits on the other.*
+> *Respond < 400ms or lose attention.*
 
-**Core rules:**
-- **Visual feedback < 100ms** (hover, press, focus states).
-- **Optimistic UI updates** — don't block on server for local actions (toggles, likes, checkboxes).
-- **Show progress for anything > 1s** — spinners, skeletons, progress bars.
-- **Perceived performance tricks:**
-  - Skeleton screens appear faster than spinners
-  - Animated progress bars feel faster than nothing (even if indeterminate)
-  - Staggered content reveal holds attention
-  - Micro-delays after payment/signup increase perceived value ("something important happened")
+**Rules:** Visual feedback < 100ms (hover, press, focus). **Optimistic UI** — don't block on server for local actions (toggles, likes, checkboxes). Show progress for anything > 1s (spinners, skeletons, bars).
+
+**Perceived performance tricks:** Skeletons > spinners. Animated progress bars feel faster even if indeterminate. Staggered reveal holds attention. Micro-delays after payment increase perceived value ("something important happened").
 
 ```tsx
-// ✅ Good: Instant feedback, async sync
-function LikeButton({ post }) {
-  const [liked, setLiked] = useState(post.isLiked);
-  const handleLike = () => {
-    setLiked(!liked);           // < 100ms visual feedback
-    mutateToggleLike(post.id)   // async, user doesn't wait
-      .catch(() => setLiked(!liked)); // revert on error
-  };
-  return <button onClick={handleLike}>...</button>;
-}
-
-// ❌ Bad: Blocking await, user stares at nothing
-async function handleLikeBad() {
-  setLoading(true);
-  await api.toggleLike(post.id); // 😴
-  setLiked(!liked);
-}
+// ✅ Instant visual, async sync
+const handleLike = () => {
+  setLiked(!liked);                          // < 100ms
+  mutateToggleLike(id).catch(() => setLiked(!liked)); // async
+};
+// ❌ Blocking await — user stares at nothing
+await api.toggleLike(id); setLiked(!liked);
 ```
 
-**Anti-patterns:** Unresponsive UI during fetches, blank screen route transitions, synchronous main-thread operations, no loading states anywhere.
+**Anti-patterns:** Unresponsive during fetches, blank route transitions, no loading states.
+
+**Validate:** Time-to-interactive. Lighthouse "First Input Delay." User studies: watch for repeated clicks (sign of "did it register?").
 
 ---
 
 ## 3. Hick's Law
-> *Decision time increases with number and complexity of choices.*
+> *More choices = slower decisions.*
 
-**Core rules:**
-- **Progressively disclose** — show only what's needed now. Wizards, accordions, "Advanced ▾".
-- **Highlight/recommend a default** — reduce decision fatigue by guiding.
-- **Break complex forms into steps** — 20 fields → 3 steps of ~7 (see Miller's Law).
-- **Nav items: ~5–7 max** at top level. Rest goes in dropdowns or "More".
+**Rules:** **Progressively disclose** — show only what's needed now. Wizards, accordions, "Advanced ▾". **Highlight default** — guide don't overwhelm. **Break forms into steps** — 20 fields → 3 steps of ~7. **Nav: ~5–7 items** top level.
 
 ```tsx
-// ✅ Good: Progressive disclosure
-<Section title="Basic" defaultOpen>
-  <Toggle label="Notifications" />
-  <Toggle label="Dark mode" />
-</Section>
-<Collapsible title="Advanced">
-  <Select label="Cache strategy" options={[...]} />
-</Collapsible>
-
-// ❌ Bad: Wall of choices — 25 fields at once
-{settings.map(s => <Field {...s} />)}
+// ✅ Progressive disclosure
+<Section title="Basic" defaultOpen><Toggle label="Notifications" /></Section>
+<Collapsible title="Advanced"><Select label="Cache strategy" /></Collapsible>
+// ❌ Wall of choices — 25 fields at once
 ```
 
-**Anti-patterns:** 15+ nav items, dashboards showing every metric, 50-option ungrouped selects, pricing pages with no recommended plan highlighted.
+**Anti-patterns:** 15+ nav items, every metric visible, 50-option selects, pricing with no recommended plan.
+
+**Validate:** Form completion time (before/after splitting steps). Drop-off rate per added option. Heatmap dwell time on decision points.
 
 ---
 
-### CATEGORY 2: Familiarity & Mental Models
-
 ## 4. Jakob's Law
-> *Users spend most time on other sites. They prefer yours works like the ones they already know.*
+> *Users spend most time on other sites. Yours should work like them.*
 
-**Core rules:**
-- **Conventional patterns:** Logo → home (top-left), cart → top-right, search → 🔍 icon, mobile → hamburger, hierarchy → breadcrumbs.
-- **Don't reinvent standard components** — date pickers, modals, dropdowns, tabs. Use familiar versions unless you have overwhelming reason.
-- **When innovating, provide an off-ramp** — let users opt-in gradually (YouTube redesign approach).
+**Rules:** Logo → home (top-left), cart → top-right, search → 🔍, mobile → hamburger, hierarchy → breadcrumbs. Don't reinvent date pickers, modals, dropdowns, tabs unless you have overwhelming reason. When innovating, provide off-ramp (YouTube redesign approach).
 
-**The innovation tradeoff:** Novel interaction patterns can differentiate your product but incur training debt. Every non-standard pattern forces users to learn something new. Ask: *Does this innovation give enough value to justify the learning cost?*
+**The innovation tradeoff:** Novel patterns incur training debt. Ask: *Does this give enough value to justify learning cost?*
 
-**Anti-patterns:** Custom scroll behavior, repositioned submit button, novel navigation without signifiers, non-standard form layouts.
+**Anti-patterns:** Custom scroll behavior, repositioned submit button, novel navigation without signifiers.
+
+**Validate:** Task completion time for first-time users vs returning users. If first-time is dramatically slower, Jakob's debt may be too high. Onboarding drop-off rate.
 
 ---
 
 ## 5. Mental Model
-> *A compressed model of what we think we know about a system and how it works.*
+> *Design for how users THINK it works.*
 
-**Core rules:**
-- **Leverage existing mental models.** "Like Spotify" → use Spotify metaphors. "Like file manager" → use file manager conventions.
-- **Bridge gaps with analogies.** Genuinely new concepts? Connect them to something familiar.
-- **Expose cause-and-effect visibly.** Users build models by observing. State changes must be observable and explainable.
-- **Avoid hidden modes.** Double-click doing something different than single-click in the same context breaks mental models silently.
+**Rules:** Leverage existing models ("like Spotify" → Spotify metaphors). Bridge gaps with analogies. Expose cause-and-effect visibly. Avoid hidden modes (double-click ≠ single-click in same context).
 
-**How to detect broken mental models:** Watch users hesitate, hover aimlessly, click the wrong thing repeatedly, or say "I thought it would...". These signal a mismatch between their model and your design.
+**Detect broken models:** Users hesitate, hover aimlessly, click wrong thing repeatedly, say "I thought it would..."
 
-**Anti-patterns:** Hidden features discoverable only by accident, inconsistent behaviors across similar-looking elements, abstract icons without labels, same gesture having different effects in different contexts.
+**Anti-patterns:** Hidden features, inconsistent behaviors across similar elements, abstract icons without labels.
+
+**Validate:** Think-aloud protocols. Watch for surprise ("I didn't expect that to happen"). Error patterns that suggest wrong mental model.
 
 ---
 
 ## 6. Paradox of the Active User
-> *Users never read manuals. They start using the software immediately.*
+> *Nobody reads docs. They start clicking immediately.*
 
-**Core rules:**
-- **Zero-onboarding usage must be possible.** Default settings work well. Core value is accessible without tutorial.
-- **Contextual help > documentation walls.** Tooltips, inline hints, placeholder text, microcopy beat PDF manuals.
-- **Design for error recovery.** Undo, clear error messages with next steps, forgiving inputs (Postel's Law).
-- **Learning by doing.** Guided tours that interact with real UI (not screenshots), progressive feature reveal tied to usage.
+**Rules:** **Zero-onboarding usage possible.** Defaults work well. Core value accessible without tutorial. **Contextual help > documentation.** Tooltips, inline hints, microcopy beat PDFs. **Design error recovery.** Undo, clear next steps, forgiving inputs. **Learning by doing.** Tours interact with real UI, progressive feature reveal.
 
-**The 10-second test:** Can a new user accomplish something meaningful within 10 seconds of opening your app? If not, the active user paradox will make most people bounce before they ever find your help docs.
+**The 10-second test:** Can a new user accomplish something meaningful within 10 seconds? If not, most bounce before finding help.
 
-**Anti-patterns:** Mandatory 10-step onboarding before app access, features locked behind "read docs" gates, error messages referencing manual page numbers.
+**Anti-patterns:** Mandatory 10-step onboarding before access, features locked behind docs, errors referencing manual page numbers.
+
+**Validate:** Time-to-first-value. Onboarding completion rate (if mandatory). Support ticket frequency for "how do I..." questions that should be discoverable.
 
 ---
 
-### CATEGORY 3: Perception & Visual Design (Gestalt Principles)
-
 ## 7. Law of Proximity
-> *Near objects are perceived as a group.*
+> *Near items = related items.*
 
-**Core rules:**
-- **Group with whitespace, not lines.** Label closer to its input than to the next label.
-- **Consistent spacing scale.** Base 4px: `4, 8, 12, 16, 24, 32, 48, 64`. Within-group gap < between-group gap.
-- **Nav items closer to each other than to page content.**
+**Rules:** Group with whitespace, not lines. Label closer to its input than next field's label. Consistent spacing scale (base 4px: `4, 8, 12, 16, 24, 32, 48, 64`). Within-group gap < between-group gap.
 
 ```css
-/* ✅ Good: Proximity creates groups */
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;           /* tight within group */
-  margin-bottom: 24px; /* loose between groups */
-}
-
-/* ❌ Bad: Uniform spacing = no grouping signal */
+/* ✅ Proximity creates groups */
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 24px; }
+/* ❌ Uniform spacing = no grouping */
 .form-bad > * + * { margin-top: 16px; }
 ```
 
-**Practical application:** Form field labels, card titles + content, toolbar icon groups, list items, definition lists. Whenever you see items that belong together, bring them closer and push other things away.
+**Where it applies:** Form labels, card titles, toolbar icon groups, list items, definition lists. Bring related things closer, push unrelated apart.
 
 ---
 
 ## 8. Law of Similarity
-> *Similar elements are perceived as a group or whole.*
+> *Same look = same kind.*
 
-**Core rules:**
-- **Same style = same type.** All primary buttons match. All destructive actions are red. All links share color/underline.
-- **Card-based UI exploits this.** Same card structure = "these are items of the same kind."
-- **Different actions must look different.** Cancel ≠ Submit visually. Secondary ≠ Primary.
+**Rules:** Same style = same type. All primary buttons match. All destructive = red. All links share color/underline. Different actions MUST look different. Cancel ≠ Submit visually.
 
 ```css
-/* ✅ Good: Visual language communicates function */
-.btn-primary   { background: #0066cc; color: white; font-weight: 600; }
-.btn-secondary { background: #f0f0f0; color: #333; }
-.btn-danger    { background: #dc3545; color: white; }
-/* Each role has a distinct visual signature */
-
-/* ❌ Bad: Different functions, same appearance */
-.btn-submit { background: #0066cc; }
-.btn-cancel { background: #0066cc; } /* which one commits? */
+/* ✅ Visual language = function */
+.primary   { background: #0066cc; color: white; font-weight: 600; }
+.secondary { background: #f0f0f0; color: #333; }
+.danger    { background: #dc3545; color: white; }
+/* ❌ Same look, different function = confusion */
+.submit { background: #0066cc; } .cancel { background: #0066cc; }
 ```
 
-**Pro tip:** Audit your interface in grayscale. If you can't distinguish action types by size/shape/weight alone, your similarity signaling is over-relying on color (accessibility issue too).
+**Pro tip:** Audit in **grayscale**. Can't distinguish action types by size/shape/weight alone? Over-relying on color = accessibility issue.
 
 ---
 
 ## 9. Law of Common Region
-> *Elements sharing a bounded area are perceived as a group.*
+> *Shared boundary = shared group.*
 
-**Core rules:**
-- **Cards, panels, containers = regions.** Background color, border, shadow creates a grouping boundary.
-- **Layout regions:** Sidebar, main, header — use background contrast to separate.
-- **Wizard steps as cards** = clear boundaries between stages.
+**Rules:** Cards, panels, containers = regions (background, border, shadow). Sidebar/main/header = regions via contrast. Wizard steps as cards = clear stage boundaries.
+
+**Hierarchy:** Common Region > Proximity. Items in same card grouped even if spaced within it. Items in different cards seen as separate even if close.
 
 ```html
-<!-- ✅ Good: Regions group related content -->
+<!-- Regions group by boundary -->
 <div class="grid grid-cols-3 gap-6">
-  <div class="card col-span-2">  <!-- region: analytics -->
-    <h3>Analytics Overview</h3>
-  </div>
-  <div class="card">             <!-- region: quick actions -->
-    <h3>Quick Actions</h3>
-  </div>
+  <div class="card col-span-2"><h3>Analytics</h3></div>  <!-- region A -->
+  <div class="card"><h3>Quick Actions</h3></div>           <!-- region B -->
 </div>
 ```
-
-**Relationship to proximity:** Common region is stronger than proximity. Items in the same card are seen as grouped even if spaced apart within that card. Items in different cards are seen as separate even if close together.
 
 ---
 
 ## 10. Law of Uniform Connectedness
-> *Visually connected elements are perceived as more related than unconnected ones.*
+> *Connected elements = related.*
 
-**Core rules:**
-- **Connector lines beat proximity.** A line between two elements makes them feel more related than two unconnected nearby elements.
-- **Timelines, workflows, step indicators** — connecting lines show sequence.
-- **Breadcrumb separators, table row borders, connector lines** all exploit this.
+**Rules:** Connector lines beat proximity. Timelines, workflows, step indicators — lines show sequence. Breadcrumb separators, table row borders exploit this.
+
+**Gestalt strength:** Uniform Connectedness > Common Region > Similarity > Proximity. **When in doubt, draw a line.**
 
 ```html
-<!-- ✅ Good: Connector shows relationship -->
-<div class="step-indicator">
-  <div class="step done">──●──</div>
-  <div class="step active">──●──</div>
-  <div class="step pending">──○──</div>
-</div>
-
-<!-- List items connected by a subtle rule -->
-<ul class="connected-list">
-  <li>Item A</li>  <!-- border-bottom connects to next -->
-  <li>Item B</li>
-  <li>Item C</li>
-</ul>
+<!-- Step indicator uses connection -->
+<div class="steps">──●──●──○</div>
+<!-- List border connects items -->
+<ul class="connected-list"><li>A</li><li>B</li><li>C</li></ul>
 ```
-
-**Gestalt hierarchy:** Uniform Connectedness > Common Region > Similarity > Proximity. When in doubt, draw a line.
 
 ---
 
 ## 11. Law of Prägnanz (Simplicity)
-> *People interpret ambiguous/complex images as the simplest possible form.*
+> *Complex → interpreted as simplest form.*
 
-**Core rules:**
-- **Every element earns its place.** Ask: "Does this help the user complete their task right now?"
-- **Recognizable icons only.** Trash can looks like trash can, not abstract geometry.
-- **Standard layouts.** Single-column for reading, grid for browsing, sidebar+main for tools — these are the simplest interpretations users naturally arrive at.
-- **Decorative complexity without function = cognitive tax.**
+**Rules:** Every element earns its place ("Does this help the user NOW?"). Recognizable icons only (trash can = trash can). Standard layouts (single-col reading, grid browsing, sidebar+main tools). Decorative complexity without function = cognitive tax.
 
-**The simplicity test:** Can you describe the page structure in one sentence? "It's a [layout type] with [main thing] and [secondary things]." If you need five sentences, there's probably too much going on.
+**Simplicity test:** Describe page structure in **one sentence**: "It's a [layout] with [main] and [secondary]." Need five sentences? Too much going on.
 
 ---
 
 ## 12. Von Restorff Effect (Isolation Effect)
-> *Among similar objects, the different one is remembered best.*
+> *Odd one out remembered best.*
 
-**Core rules:**
-- **One standout element per screen maximum.** If everything emphasizes, nothing does.
-- **Primary CTA must be visually distinct** from secondary/cancel.
-- **Important notifications break the pattern.** Errors, confirmations, upgrades need to pop.
-- **Restraint is the skill.** Size, weight, color, position, motion — pick 1-2 dimensions of emphasis. Don't use all of them everywhere.
+**Rules:** **One standout per screen max.** Primary CTA visually distinct from secondary/cancel. Important notifications break pattern. **Restraint = skill.** Pick 1-2 emphasis dimensions (size, weight, color, position, motion). Not all everywhere.
 
 ```css
-/* ✅ Good: One element pops */
-.button-secondary { background: #f0f0f0; color: #333; }
-.button-primary   { background: #0066cc; color: white; font-weight: 600; } /* pops */
-.button-danger     { background: #dc3545; color: white; } /* used sparingly */
-
-/* ❌ Bad: Everything competes for attention */
-.btn-a { background: red; }
-.btn-b { background: blue; font-size: 1.2em; }
-.btn-c { background: yellow; border: 3px dashed orange; animation: pulse; }
+/* ✅ One pops */
+.secondary { background: #f0f0f0; }
+.primary   { background: #0066cc; color: white; font-weight: 600; } /* pops */
+.danger    { background: #dc3545; color: white; } /* sparse */
+/* ❌ Everything competes */
+.a { background: red; } .b { background: blue; font-size: 1.2em; } .c { background: yellow; animation: pulse; }
 ```
 
-**⚠️ Accessibility:** Never rely on color alone. Combine with size, weight, shape, position, or text labels. Respect `prefers-reduced-motion` for motion-based emphasis.
+**⚠️ Accessibility:** Never rely on color alone. Combine size + weight + shape + position + text. Respect `prefers-reduced-motion`.
 
-**⚠️ Ad-blindness risk:** If your "standout" element looks like a banner ad (flashing, contrasting aggressively, placed where ads usually live), users will tune it out via Selective Attention. Emphasis should feel native, not ad-like.
+**⚠️ Ad-blindness risk:** Standout element that looks like banner ad (flashing, aggressive contrast, ad placement) → users tune out via Selective Attention. Emphasis must feel native.
 
 ---
 
 ## 13. Selective Attention
-> *People focus only on stimuli related to their current goal.*
+> *People focus only on goal-related stimuli.*
 
-**Core rules:**
-- **Users ignore off-goal content.** Checkout user misses newsletter banner. Search user skips promotional carousel.
-- **Design for the goal-state.** What is the user trying to do RIGHT NOW? Remove everything that doesn't serve it.
-- **Avoid "banner blindness" zones.** Top-right banners, ad-like footers, generic sidebars — users have trained themselves not to see these.
-- **In-context beats prominent.** An inline message where the user is looking beats a modal interrupting them.
+**Rules:** Ignore off-goal content (checkout user misses newsletter banner). Design for goal-state RIGHT NOW. Avoid banner-blindness zones (top-right banners, ad-like footers). In-context beats prominent (inline message where user looks > interrupting modal).
 
-**Design technique — Goal-State Mapping:**
+**Goal-State Mapping technique:**
+
 ```
-User's likely goal: "Find pricing"
-→ Make Pricing link obvious in nav, footer, homepage
-→ Don't distract with "Read our blog" popup on the pricing page
-→ Remove nav clutter on pricing page (Hick's Law + Selective Attention combo)
+Goal: "Find pricing"
+→ Pricing link obvious in nav + footer + homepage
+→ No "Read our blog" popup on pricing page
+→ Nav clutter removed on pricing page (Hick's + Selective Attention combo)
 
-User's likely goal: "Submit this form"
-→ Remove header nav, footer, sidebar — pure form view
-→ Show progress indicator (working memory)
+Goal: "Submit this form"
+→ Header/nav/footer/sidebar stripped — pure form view
+→ Progress indicator shown (Working Memory)
 → One clear CTA (Von Restorff)
-→ Validate inline, fast (Doherty + Postel's)
+→ Inline validation, fast (Doherty + Postel's)
 ```
 
-**Anti-pattern:** Promotional banners on checkout pages, modals interrupting task flows, critical info in footers/sidebars on task-focused pages.
+**Anti-pattern:** Promo banners on checkout, modals interrupting tasks, critical info in footers on task pages.
 
 ---
 
-### CATEGORY 4: Memory & Cognition
-
 ## 14. Miller's Law
-> *Average person holds 7±2 items in working memory.*
+> *Working memory holds 7±2 items.*
 
-**Core rules:**
-- **~5–9 items max per view.** Nav tabs, filter chips, radio groups.
-- **Chunk to stay within limit.** Credit card: `XXXX XXXX XXXX XXXX`. Phone: `(555) 123-4567`.
-- **Never require cross-page recall.** Show context, persist selections, maintain state.
-- **Progressive disclosure** keeps working memory load low (overlaps Hick's Law).
+**Rules:** ~5–9 items per view (nav tabs, filters, radios). Chunk to stay within limit. Never require cross-page recall. **Practical limit: 4±1** for complex items (menu options with labels) — original paper was 1D stimuli; real items are richer. Err toward fewer.
 
-**The myth nuance:** Miller's original paper was about one-dimensional stimuli. Real-world "items" are richer, so the practical limit is often closer to **4±1** for complex items (like menu options with labels). Err on the side of fewer.
+**Validate:** Card sorting studies. Eye-tracking (fixation count per area). Task success when N items present vs reduced.
 
 ---
 
 ## 15. Cognitive Load
-> *Mental resources needed to understand and interact with an interface.*
+> *Mental resources needed to understand your UI.*
 
 Three types — know which you're designing for:
 
-| Type | Definition | How to Reduce It |
+| Type | Definition | Fix |
 |---|---|---|
-| **Intrinsic** | Effort inherent to the task itself | Support with wizards, previews, tooltips, examples. You can't eliminate it, only support it. |
-| **Extraneous** | Effort from how you present it | **This is fixable.** Remove decoration, simplify visuals, avoid gratuitous animation, clean up layout. |
-| **Germane** | Effort spent learning/processing | Reduce through familiarity (Jakob's Law). Use known patterns so users spend zero mental resources "figuring out" your UI. |
+| **Intrinsic** | Effort inherent to the task | Support with wizards, previews, tooltips. Can't eliminate, only support. |
+| **Extraneous** | Effort from HOW you present it | **Fixable.** Remove decoration, simplify visuals, kill gratuitous animation. |
+| **Germane** | Effort spent learning/processing | Reduce via familiarity (Jakob's). Known patterns = zero learning cost. |
 
-**One concept per screen** is the golden rule. Settings categorized by topic, not 50 toggles flat.
+**Golden rule: One concept per screen.** Settings categorized, not 50 toggles flat.
 
-```tsx
-// ✅ Good: Low cognitive load — one concern per step
-const steps = [
-  { title: 'Account',   fields: ['email', 'password'] },
-  { title: 'Profile',   fields: ['name', 'avatar'] },
-  { title: 'Preferences', fields: ['theme', 'notifications'] },
-];
-
-// ❌ Bad: High cognitive overload — everything at once
-// 25 fields, 5 sections, conditional logic, all visible simultaneously
-```
+**Validate:** NASA-TLX task load assessment (research method). Time-on-task comparisons. Error rate correlation with interface complexity.
 
 ---
 
 ## 16. Chunking
-> *Break information into meaningful groups.*
+> *Break info into meaningful groups.*
 
-**Core rules:**
-- **Group nav under headings.** "Account", "Billing", "Support" vs 15 flat links.
-- **Format data for scanning.** Phones, dates, addresses — visual chunking.
-- **Card grids chunk content.** 12 posts → 3 rows × 4 cards. Each card = one chunk.
-- **Breadcrumbs are spatial chunks.** `Home > Products > Category > Item`.
+**Rules:** Group nav under headings ("Account", "Billing"). Format data for scanning (phones, dates, addresses). Card grids chunk content (12 posts → 3×4 cards). Breadcrumbs = spatial chunks.
 
-**Chunking vs progressive disclosure:** Chunking organizes what's visible. Progressive disclosure controls how much is visible. They work together — show a few chunks, let users expand within each.
+**Chunking vs Progressive Disclosure:** Chunking organizes WHAT'S VISIBLE. PD controls HOW MUCH IS VISIBLE. They work together — show few chunks, expand within each.
 
-**Practical chunk sizes for web:**
-- Navigation items per group: 3–7
-- Form fields per step: 4–7
-- Dashboard cards per row: 2–4
-- Table columns visible: 4–8 (rest in detail view)
-- List items before paginating: 7–15
+**Practical sizes:** Nav group: 3-7. Form step: 4-7 fields. Dashboard row: 2-4 cards. Table cols: 4-8 visible. List before paginate: 7-15.
 
 ---
 
 ## 17. Working Memory
-> *Cognitive system that temporarily holds/manipulates information for tasks.*
+> *Temporary memory for active tasks.*
 
-**Core rules:**
-- **Never ask users to recall from a previous step without showing it.** "Step 3 of 3" summarizes Steps 1 & 2.
-- **Persist values.** Navigate away and back? Draft still there.
-- **State visibility.** Is it saving? Did it succeed? What's left?
-- **Multi-step flows = persistent progress indicators always.**
+**Rules:** Never ask users to recall from previous step without showing it ("Step 3 of 3" summarizes 1&2). Persist values (navigate away/back → draft still there). State visibility always (saving? saved? what's left?). Multi-step = persistent progress indicator.
 
-**The cost of losing working memory context:** Every time a user forgets a piece of information they needed (what they selected on step 1, what field they were editing, whether they saved), they experience a **micro-friction** that accumulates. Enough micro-frictions = abandonment.
+**Micro-friction cost:** Every forgotten piece = tiny frustration. Accumulates → abandonment.
 
-**Implementation checklist:**
-- [ ] Auto-save drafts (forms, compose, settings changes)
-- [ ] Summarize prior selections at each step
-- [ ] Show save status clearly (saved ✓ / saving... / unsaved changes)
-- [ ] Restore state on return (browser back, tab switch, refresh)
+**Implementation checklist:** Auto-save drafts ✓. Summarize prior selections ✓. Save status visible ✓. Restore state on return ✓.
+
+**Validate:** Return rate after abandonment (did draft-saving bring them back?). Error rate on multi-step flows (does state visibility reduce mistakes?). "Start over" click rate.
 
 ---
 
 ## 18. Serial Position Effect
-> *First and last items in a series are remembered best.*
+> *First and last remembered best.*
 
-**Core rules:**
-- **Most important item first, most important action last.** Nav: most-used link first. Form: primary CTA last.
-- **Pricing tables:** recommended plan first or last (or highlight via Von Restorff).
-- **Accept middle-item amnesia.** In equal-importance lists, middle items will be remembered least. Reorder if order matters.
-- **Onboarding: start strong, end strong.** First impression (Aesthetic-Usability) + final moment (Peak-End Rule).
+**Rules:** Most important item first, most important action last. Nav: most-used first. Form: primary CTA last. Pricing: recommended plan first or last (or Von Restorff-highlighted). Accept middle amnesia in equal lists.
 
-**Application beyond lists:**
-- **Menu items:** Put revenue-driving links first
-- **Feature announcements:** Lead with the biggest win
-- **Error messages:** Show the most actionable error first (not necessarily the first the backend returned)
-- **Testimonials:** strongest quote first or last
+**Beyond lists:** Menu: revenue links first. Announcements: lead with biggest win. Errors: most actionable first (not necessarily first from backend). Testimonials: strongest quote first or last.
 
 ---
 
-### CATEGORY 5: Emotion & Behavior
-
 ## 19. Aesthetic-Usability Effect
-> *Users perceive aesthetically pleasing design as more usable.*
+> *Pretty = feels more usable.*
 
-**Core rules:**
-- **Visual polish is functional, not cosmetic.** Users forgive minor usability issues in beautiful interfaces.
-- **Cohesive design system.** Consistent type, color, spacing, icons = aesthetic coherence.
-- **⚠️ Beauty masks usability problems.** Testing: users rate pretty-but-broken interfaces high. Test function separately from form.
-- **First impression: ~50ms.** Above-the-fold quality sets the tone for everything after.
+**Rules:** Polish is functional, not cosmetic. Cohesive design system (type, color, spacing, icons). ⚠️ Beauty masks problems — test function separately from form. First impression: **~50ms**. Above-the-fold sets tone for everything.
 
-**Polish checklist:**
-- [ ] Consistent type scale (heading/body/caption)
-- [ ] Harmonious color palette
-- [ ] Adequate whitespace (empty space is design)
-- [ ] Single icon family, single style
-- [ ] Micro-interactions (hover/focus/press states)
-- [ ] Responsive at every viewport
-- [ ] No ragged edges, misaligned elements, or orphaned pixels
+**Polish checklist:** Consistent type scale ✓. Harmonious colors ✓. Whitespace ✓. Single icon family ✓. Micro-interactions ✓. Responsive everywhere ✓. No ragged edges/misalignments ✓.
 
-**ROI argument for stakeholders:** "Investing in visual quality isn't vanity — the Aesthetic-Usability Effect is well-documented. Users report higher satisfaction and tolerance for issues in polished interfaces. It's a usability multiplier, not a nice-to-have."
+**Stakeholder pitch:** "Investing in visual quality isn't vanity — the Aesthetic-Usability Effect is well-documented. Users report higher satisfaction and tolerance in polished interfaces. It's a usability multiplier."
+
+**Validate:** A/B test: same functionality, different polish levels. Perceived usability ratings (expect pretty version to score higher even if functionally identical). Task completion rates (the real test — sometimes pretty version wins, sometimes it masks problems).
 
 ---
 
 ## 20. Peak-End Rule
-> *Experiences are judged by peak intensity + final moment, not the average.*
+> *Judged by peak emotion + final moment.*
 
-**Core rules:**
-- **Design peak moments.** Task completion = celebrate. Confetti, meaningful copy, satisfying animation.
-- **End every flow on a high note.** Checkout → warm confirmation + next steps. Form submitted → personality (Mailchimp "High Five").
-- **Negative peaks linger longer than positive.** One checkout error hurts more than great browsing helps. Invest in error recovery.
-- **Map your user journey.** Identify emotional peaks (positive and negative). Design them intentionally.
+**Rules:** Design peak moments at task completion (confetti, copy, animation). End every flow on high note (warm confirmation + next steps). **Negative peaks linger longer** — invest in error recovery. Map journey → identify peaks → design intentionally.
+
+**Flow endings ranked:**
+1. ✅ Delight + clear next step (confetti + "View order")
+2. ✅ Warm confirmation + next step
+3. ⚠️ Confirmation only ("Done") — functional, forgettable
+4. ❌ Abrupt cutoff — feels broken
+5. ❌ Negative peak at end — worst impression
 
 ```tsx
-// ✅ Good: Strong end state
+// ✅ Strong end
 <SuccessScreen>
-  <Confetti />                          {/* peak delight */}
-  <Heading>Order #{order.id} confirmed!</Heading>
-  <p>We'll email you at {order.email} with tracking.</p>
-  <CTA href="/orders">View Order Details</CTA>  {/* clear next step */}
+  <Confetti />
+  <Heading>Order #{id} confirmed!</Heading>
+  <p>Email sent to {email} with tracking.</p>
+  <CTA href="/orders">View Details</CTA>
 </SuccessScreen>
-
-// ❌ Bad: Dead end
-<div>Thank you. Order received.</div>  /* cold, abrupt, no next step */
+// ❌ Dead end
+<div>Thank you. Order received.</div>
 ```
 
-**Common flow endings ranked:**
-1. ✅ Delight + clear next step (confetti + "View your order")
-2. ✅ Warm confirmation + next step ("You're all set! Here's what happens next")
-3. ⚠️ Confirmation only ("Done") — functional but forgettable
-4. ❌ Abrupt cutoff (page goes blank, redirects abruptly) — feels broken
-5. ❌ Negative peak (error message at end of flow) — worst possible impression
+**Validate:** NPS/CSAT measured at flow endpoints (Peak-End prediction: these scores weight heavily on final moment). Exit survey after key flows. Return rate post-completion (did good ending bring them back?).
 
 ---
 
 ## 21. Zeigarnik Effect
-> *Uncompleted or interrupted tasks are remembered better than completed ones.*
+> *Incomplete tasks remembered better.*
 
-**Core rules:**
-- **Show incomplete progress prominently.** "Your profile is 75% complete." "3 of 8 files remaining."
-- **Partial progress motivates completion.** Endowed progress effect: sign up gives instant 10% toward profile completion. Progress bars start slightly filled.
-- **Auto-save drafts.** Let users leave and come back — the incomplete task creates return motivation.
-- **Never hide in-progress state.** Saved drafts, abandoned carts, unfinished onboarding = re-entry points, not failures.
+**Rules:** Show incomplete progress prominently ("75% complete", "3 of 8 remaining"). Partial progress motivates (endowed progress: signup instant 10%). Auto-save drafts → incomplete = return motivation. Never hide in-progress state (drafts, abandoned carts, unfinished onboarding = re-entry points).
 
 ```tsx
-// ✅ Good: Visible incomplete progress drives return
 <Card>
   <ProgressBar value={percent} />
-  <p>Your profile is {percent}% complete</p>
-  {percent < 100 && (
-    <Link to="/settings/profile">Complete your profile →</Link>
-  )}
+  <p>{percent}% complete</p>
+  {percent < 100 && <Link to="/settings/profile">Complete →</Link>}
 </Card>
 ```
 
-**Ethical consideration:** The Zeigarnik effect is powerful but can be manipulative if overused (gamification dark patterns, artificial urgency). Use it to help users complete genuinely valuable tasks, not to drive addictive looping behavior.
+**⚠️ Ethics:** Powerful but can manipulate (gamification dark patterns, artificial urgency). Use for genuinely valuable tasks, not addictive looping.
+
+**Validate:** Return/abandonment rate after showing progress bar (before/after). Profile completion rate with vs without endowed progress. Draft recovery rate (auto-saved drafts reopened within 7 days).
 
 ---
 
 ## 22. Goal-Gradient Effect
-> *Motivation increases as proximity to the goal increases.*
+> *Closer to goal = more motivated.*
 
-**Core rules:**
-- **Accelerate perceived progress near the end.** Smaller remaining steps, larger increments. The last 20% should feel faster than the first 20%.
-- **Framing matters.** "Only 2 purchases until Gold!" >> "10 purchases to reach Gold."
-- **Large goals → milestones.** "Complete setup" → "Step 1✓ Step 2✓ Step 3 → almost there!"
-- **Onboarding bars that fill faster near the end** measurably increase completion rates.
+**Rules:** Accelerate perceived progress near end (smaller remaining steps, larger increments). Framing: "Only 2 purchases until Gold!" >> "10 to reach Gold." Large goals → milestones. Onboarding bars filling faster near end = higher finish rates.
 
-**Implementation techniques:**
-- Progress bar with **non-linear easing** (accelerates visually toward 100%)
-- **Milestone celebrations** at 25%, 50%, 75% (mini peaks)
-- **"Almost there!" messaging** when > 80% complete
-- **Remaining count instead of percentage** when close to goal ("2 steps left" > "92% complete")
+**Techniques:** Non-linear easing progress bar (accelerates toward 100%). Milestone celebrations at 25/50/75%. "Almost there!" when >80%. Remaining count near goal ("2 steps left" > "92%").
+
+**Validate:** Funnel progression velocity (do users speed up near end?). Milestone engagement rate (do 25/50/75% markers increase activity?). A/B: linear vs accelerated progress bar.
 
 ---
 
 ## 23. Flow
-> *Immersed state of energized focus, full involvement, enjoyment.*
+> *Immersed focus state.*
 
-**Core rules:**
-- **Match challenge to skill.** Novices → guided flows. Experts → keyboard shortcuts, power-user features, bulk operations.
-- **Remove friction from core tasks.** Writing app → distraction-free writing. IDE → seamless code/run/debug loop.
-- **Immediate feedback loops.** Every action → visible response (Doherty Threshold). This maintains flow.
-- **Don't interrupt flow.** No unnecessary modals, upsells, notifications during focus tasks. Save non-critical comms for natural breaks.
+**Rules:** Match challenge to skill (novices → guided, experts → shortcuts/bulk). Remove friction from core tasks (writing app → distraction-free, IDE → seamless code/run/debug). Immediate feedback loops (Doherty). Don't interrupt flow with modals/upsells during focus tasks.
 
-**Signs of broken flow:** User has to stop and think "where do I click next?", waits for anything, switches context to check something, or gets pulled away by an interruption. Each break risks losing the flow state entirely, and research shows it takes **15-25 minutes** to regain deep flow once broken.
+**Broken flow signs:** User stops to think "where next?", waits, switches context, gets pulled away. Each break risks losing flow — takes **15-25 minutes** to regain deep flow.
 
-**Flow-friendly design patterns:**
-- Keyboard shortcuts for frequent actions (no mouse reach)
-- Command palettes (`Cmd+K`) for power users
-- Auto-save so Ctrl+S isn't needed
-- Distraction-free/fullscreen modes for focus tasks
-- Batch operations (select many → act once) vs repetitive individual actions
+**Flow-friendly patterns:** Keyboard shortcuts. Command palette (`Cmd+K`). Auto-save. Distraction-free/fullscreen mode. Batch operations (select many → act once).
+
+**Validate:** Session duration for focus tasks (longer = more flow). Interruption recovery time. Power-user feature adoption rate. Keyboard shortcut usage analytics.
 
 ---
 
 ## 24. Cognitive Bias
-> *Systematic errors in thinking that influence perception and decisions.*
+> *Systematic thinking errors.*
 
-**Core rules:**
-- **Design FOR bias, don't fight it blindly.** Users anchor on first price seen. Prefer defaults. Follow social proof.
-- **Ethical persuasion toolkit:**
-  - **Anchoring:** Show original price crossed out next to sale price
-  - **Social proof:** "Joined by 10,000+ developers" (must be genuine)
-  - **Scarcity (genuine only):** "3 spots left" — never fake
-  - **Defaults:** Pre-select the recommended option
-  - **Authority:** "Recommended by [trusted expert]"
-- **Dark patterns to avoid:**
-  - Fake scarcity ("Only 2 left!" when there are 500)
-  - Forced continuity (free trial auto-bills without clear warning)
-  - Confirmshaming ("No, I want to miss out" as cancel option)
-  - Roach motel (easy to join, impossible to leave/ delete account)
-  - Hidden costs revealed at final checkout step
+**Ethical persuasion toolkit:**
+- **Anchoring:** Original price crossed out next to sale
+- **Social proof:** "10,000+ developers" (must be genuine)
+- **Scarcity (genuine only):** "3 spots left"
+- **Defaults:** Pre-select recommended option
+- **Authority:** "Recommended by [trusted expert]"
 
-**The trust equation:** Short-term gains from dark patterns << Long-term value from trusted relationships. Every biased-choice manipulation that deceives users erodes future trust. Design for bias transparently.
+**Dark patterns to never use:** Fake scarcity. Forced continuity (auto-bill without warning). Confirmshaming ("No, I want to miss out"). Roach motel (easy join, impossible leave). Hidden costs at checkout.
+
+**Trust equation:** Short-term dark pattern gains << Long-term trust value. Every deceptive manipulation erodes future trust.
+
+**Validate:** Conversion rates with ethical vs dark patterns (dark usually wins short-term, loses long-term). Churn rate post-signup (did manipulative signup backfire?). Support ticket sentiment analysis.
 
 ---
 
 ## 25. Choice Overload (Paradox of Choice)
-> *Too many options overwhelm and paralyze.*
+> *Too many options = paralysis.*
 
-**Core rules:**
-- **Curate, don't catalog.** 3-5 options presented. "See all" for power users.
-- **Smart recommendations.** "Pick for me" buttons, AI-suggested configs.
-- **Categorized choice architecture.** 50 options in 5 categories of 10 >> 50 flat options.
-- **Defer, don't force.** Favoriting, comparison mode, "decide later" for complex choices.
+**Rules:** Curate 3-5 options. "See all" for power users. Smart recommendations / "Pick for me." Categorized choice architecture (50 in 5 categories of 10 >> 50 flat). Defer complex decisions (favorite, compare, "decide later").
 
-**The sweet spot:** Research consistently shows that **offering 3-5 options** maximizes conversion satisfaction. Below 3 feels constraining. Above 7 causes measurable decision fatigue. Between 3-5 with a recommended default is optimal for most contexts.
+**Sweet spot:** Research shows **3-5 options** maximizes satisfaction. <3 feels constraining. >7 causes measurable fatigue. 3-5 with recommended default = optimal.
 
-**When you genuinely need many options:**
-1. Start with a **recommended/default** pre-selected
-2. Let users **narrow down** with filters (not scroll through 50)
-3. Offer **comparison mode** for finalists
-4. Allow **"decide later"** with saved progress
+**Many-options fallback:** Default pre-selected → filters to narrow → comparison mode → "decide later" with save.
+
+**Validate:** Decision completion rate vs number of options presented (graph it — expect inverted-U curve). Time-to-decision. "Skip" / abandon rate at selection screens.
 
 ---
 
-### CATEGORY 6: System Design & Robustness
-
 ## 26. Tesler's Law (Conservation of Complexity)
-> *Every system has irreducible complexity. It lives either in the code or in the user's brain.*
+> *Complexity can't die. Only move — code or user's brain.*
 
-**Core rules:**
-- **Absorb complexity in code, not UI.** Your job: handle the hard stuff so users don't.
-- **Smart defaults absorb complexity.** 10 settings to configure? Pick good defaults, let users override.
-- **Don't oversimplify to abstraction.** "Auto" button that doesn't work well >> thoughtful exposed controls. Simple surface, advanced available underneath.
-- **Progressive disclosure = the answer.** Simple surface → advanced options for those who need them.
+**Rules:** Absorb complexity in code, not UI. Smart defaults (10 settings? Pick good ones, let users override). Don't oversimplify to abstraction ("Auto" that doesn't work well >> thoughtful controls). Simple surface, advanced underneath. **Progressive disclosure = answer.**
 
 ```tsx
-// ✅ Good: System absorbs complexity
-<SmartDateInput
-  label="When?"
-  // Handles parsing, timezone, validation, formatting
-  // User picks a date. That's it.
-/>
-
-// ❌ Bad: Complexity dumped on user
-<input
-  placeholder="2024-01-15T14:30:00+00:00"
-  pattern="^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}..."
-  label="Enter date in ISO 8601 format with timezone offset..."
-/>
+// ✅ System absorbs complexity
+<SmartDateInput label="When?" /* parses, timezone, validates, formats */ />
+// ❌ Complexity dumped on user
+<input placeholder="2024-01-15T14:30:00+00:00" label="Enter ISO 8601 with timezone..." />
 ```
 
-**The engineer's tradeoff:** Spending 1 extra week reducing UI complexity saves millions of users 1 extra minute each. Larry Tesler's argument at Xerox PARC. Always err toward absorbing complexity in code.
+**Engineer's tradeoff:** 1 extra week reducing UI complexity saves millions × 1 minute each. Always absorb in code.
 
-**Signs complexity is in the wrong place:** Users need to read documentation to use basic features, error messages expose internal concepts (UUIDs, stack traces, database keys), or you hear "why is this so complicated?" about common tasks.
+**Signs complexity is misplaced:** Users need docs for basic features. Errors expose internals (UUIDs, stack traces). "Why is this so complicated?" about common tasks.
+
+**Validate:** Time-to-task-completion before/after simplification. Support ticket complexity ("how do I..."). Feature discovery rate (are advanced features being used or ignored?).
 
 ---
 
 ## 27. Postel's Law (Robustness Principle)
-> *Be liberal in what you accept, conservative in what you send.*
+> *Liberal in what you accept, conservative in what you send.*
 
-**Core rules:**
-- **Accept varied input gracefully:**
-  - Phones: `(555) 123-4567`, `555.123.4567`, `5551234567` → all valid
-  - Names: unicode, spaces, hyphens, apostrophes → all valid
-  - Dates: multiple formats → parse and normalize internally
-  - Search: tolerate typos, fuzzy match
-- **Output clean, consistent, valid data.** Normalize before storing. Validate before API calls.
-- **Forgiving error recovery.** "Did you mean...?" > "Invalid input."
-- **Graceful degradation.** Feature fails? Core functionality still works.
+**Rules:** Accept varied input gracefully — phones `(555) 123-4567` / `555.123.4567` / `5551234567`, names with unicode/spaces/hyphens, dates in any format, search with typos/fuzzy match. Output clean normalized data. Forgive errors ("Did you mean...?" > "Invalid."). Graceful degradation.
 
 ```tsx
-// ✅ Good: Liberal input, conservative output
-function PhoneInput({ value, onChange }) {
-  return (
-    <input
-      value={value}
-      onChange={(e) => {
-        const raw = e.target.value.replace(/[^\d+\-\s().]/g, '');
-        onChange(raw); // store normalized internally
-      }}
-      placeholder="(555) 123-4567"
-      // Accepts any reasonable format. Normalizes to digits-only.
-    />
-  );
-}
-
-// Output: always normalized before sending
-function formatForAPI(phone) {
-  return phone.replace(/\D/g, ''); // "+1 (555) 123-4567" → "15551234567"
-}
+// ✅ Liberal input, conservative output
+<input onChange={(e) => {
+  const raw = e.target.value.replace(/[^\d+\-\s().]/g, '');
+  onChange(raw); // normalize internally
+}} placeholder="(555) 123-4567" />
+// Output: phone.replace(/\D/g, '') → "+1 (555) 123-4567" → "15551234567"
 ```
 
-**Postel's Law is the foundation of forgiving UX.** Combine with Doherty Threshold (fast validation feedback) and Paradox of Active User (no manual needed) for forms that feel intelligent rather than rigid.
+**Foundation of forgiving UX.** Combine with Doherty (fast validation) + Active User (no manual needed) = forms that feel intelligent, not rigid.
+
+**Validate:** Form error rate by input format diversity. Support tickets for "it won't accept my [valid] input." Completion rate with forgiving vs strict validation.
 
 ---
 
 ## 28. Occam's Razor
-> *Fewest assumptions wins. Among equally effective solutions, pick the simplest.*
+> *Simplest solution with fewest assumptions wins.*
 
-**Core rules for UX:**
-- **Simplest explanation for user behavior is usually right.** Button not getting clicks? It doesn't look clickable / poorly positioned / unclear label. NOT "users don't understand our revolutionary paradigm."
-- **Fewer moving parts.** Two approaches work equally? Pick the one with fewer concepts to learn, fewer edge cases, fewer interactions.
-- **Avoid over-engineering.** Not every screen needs A/B testing. Not every interaction needs animation. Not every form needs real-time validation.
+**Rules:** Simplest explanation for behavior is usually right (button not clicked? Doesn't look clickable / poorly positioned / unclear label — NOT "users don't understand our paradigm"). Fewer moving parts wins. Not every screen needs A/B testing, animation, or real-time validation.
 
-**Occam's questions before adding any feature:**
-1. Does this solve a real problem we've observed?
-2. Is there a simpler way to solve it?
-3. Does this add a new concept for the user to understand?
-4. Would removing this break anything?
-5. Can we ship without this and add it later?
+**Occam's questions before adding anything:**
+1. Does this solve a real observed problem?
+2. Is there a simpler way?
+3. Does this add a new user concept?
+4. Would removing it break anything?
+5. Can we ship without it and add later?
 
-**The "simplest" trap:** Occam's Razor doesn't mean "oversimplified to the point of uselessness." It means the simplest solution that **actually solves the problem**. Under-simplifying (Tesler's Law violation) pushes complexity to users.
+**The trap:** "Simplest" ≠ "oversimplified to useless." Simplest that **actually solves the problem**. Under-simplifying = Tesler's violation (complexity pushed to user).
+
+**Validate:** Feature usage rate (is the complex version actually used?). Support tickets for confused users. A/B: simple vs full-featured version.
 
 ---
 
 ## 29. Parkinson's Law
 > *Work expands to fill available time.*
 
-**Core rules for UX:**
-- **Design for speed.** Auto-save, keyboard shortcuts, templates, bulk ops → reduce time-to-completion.
-- **Implicit deadlines.** Progress bars, step counts ("Step 2 of 4"), ETA displays create gentle time pressure.
-- **Remove unnecessary steps.** Every extra field, click, or page = opportunity for Parkinson's inflation.
-- **Pre-fill everything possible.** User data, context, location, previous choices.
+**Rules:** Design for speed (auto-save, shortcuts, templates, bulk ops). Implicit deadlines (progress bars, "Step 2 of 4", ETA). Remove unnecessary steps. Pre-fill everything possible.
 
-**Parkinson's in product design manifests as:**
-- Forms that could be 3 fields but are 10 (because there was space)
-- Onboarding that takes 5 minutes because nobody constrained it
-- Checkouts with 6 steps because each team added "just one more"
-- Settings pages that grew organically without pruning
+**Parkinson's manifests as:** Forms: could be 3 fields but are 10 (space existed). Onboarding: 5 minutes because nobody constrained it. Checkout: 6 steps (each team added "just one more"). Settings: grew organically without pruning.
 
-**Counter-tactics:**
-- Set **arbitrary constraints** at design time: "This form must fit on one screen." "Checkout completes in ≤ 3 steps."
-- **Time yourself** performing the task. If it takes you 2 minutes (and you built it), it'll take a user 10+.
-- **Measure drop-off per step.** Where do users abandon? That step is probably bloated or unnecessary.
+**Counter-tactics:** Arbitrary constraints at design time ("fits one screen," "checkout ≤ 3 steps"). Time yourself (you built it = 2min → user takes 10+). Measure drop-off per step (abandonment = bloat signal).
+
+**Validate:** Time-on-task measurements. Step-by-step funnel drop-off (which step loses most users?). Form completion time with vs without pre-fill. Before/after constraint-imposed redesign.
+
+---
+
+## Combined Application: How Laws Work Together
+
+Real design never applies one law in isolation. Here's how they combine on common components:
+
+### A Well-Designed Card Component
+
+```
+┌─────────────────────────────────┐  ← Common Region (boundary groups content)
+│ 📊 Revenue        $12,400      │  ← Similarity (icon + label + value pattern)
+│                         ↑ +8%   │  ← Von Restorff (trend badge pops — ONE emphasis)
+│                                 │
+│ ─────── ─────── ───────       │  ← Uniform Connectedness (lines = related)
+│ Jan    Feb    Mar            │     sub-items
+└─────────────────────────────────┘  ← Prägnanz (simple layout, scannable)
+     ↑                           ← Proximity (title close to chart, far from next card)
+```
+
+Laws applied: **Common Region + Similarity + Von Restorff + Uniform Connectedness + Prägnanz + Proximity** = 6 laws on one component. This is normal.
+
+### A Multi-Step Signup Form
+
+```
+Step 1: Create Account    ●━━━━●━━━━○━━━━○   ← Uniform Connectedness (progress)
+                        ↑                ← Doherty (inline validation < 400ms)
+  Email: [____________]                  ← Postel's (accepts any email format)
+  Password: [__________]                 ← Tesler's (password strength meter;
+                                         shows requirements inline)
+
+Step 2: Your Profile                     ← Hick's (only 3 fields — not 10)
+  Name: [_____________]                 ← Fitts's (44px inputs, spaced 8px apart)
+  Avatar: [Upload]                      ← Von Restorff (primary "Upload" button pops)
+
+Step 3: Preferences  (collapsed ▾)      ← Progressive disclosure (Hick's again)
+  [✓] Email updates                    ← Default pre-selected (Cognitive Bias)
+  [  ] SMS notifications               ← Zeigarnik (overall progress: 66%)
+                                       ← Working Memory (steps 1-2 summarized here)
+```
+
+Laws applied: **9 laws working together** across 3 steps. This is what real design looks like.
+
+### A Dashboard Page
+
+```
+┌─ Navigation ──────────────┐  ← Jakob's (conventional left-nav)
+│ Home  Analytics  Settings  │     Hick's (5 items, grouped)
+│                            │
+├──────────────┬─────────────┤  ← Proximity (two regions, loosely spaced)
+│             │             │
+│  ANALYTICS  │  QUICK ACTS  │  ← Common Region (cards = regions)
+│  ┌─────┐    │  ┌─────┐    │
+│  │ Rev │    │  │ +Add│    │  ← Similarity (same card structure)
+│  │Users│    │  │Export│   │
+│  └─────┘    │  └─────┘    │
+│  ┌─────┐    │             │
+│  │Bounce│   │             │  ← Von Restorff (alert card pops if error)
+│  └─────┘    │             │
+└──────────────┴─────────────┘  ← Prägnanz (whole thing describable in one sentence)
+   ↑ Cognitive Load: one concept per region
+   ↑ Selective Attention: highest metrics in scan path (top-left of main)
+   ↑ Serial Position: most important metric first (Revenue)
+```
+
+**Takeaway:** Don't try to apply laws one-at-a-time. Design the component, then audit against relevant laws to find gaps.
+
+---
+
+## Real-World Teardowns
+
+### Teardown 1: GitHub Settings Page (Before → After)
+
+**Before (typical SaaS anti-pattern):**
+- 50+ toggles in a flat alphabetical list
+- No grouping, no search, no indication of which settings matter
+- "Advanced" toggle mixed with basic preferences
+- Each toggle identical visual weight
+- No way to understand impact of changing a setting
+
+**Laws violated:** Cognitive Load (🔴), Hick's Law (🔴), Chunking (🔁), Von Restorff (none — nothing stands out), Miller's Law (🔴), Tesler's Law (complexity dumped on user)
+
+**After (applying laws):**
+- **Chunked into 4 categories:** Account, Notifications, Integrations, Advanced (Chunking + Cognitive Load)
+- **Search bar at top** (Postel's — accepts fuzzy queries)
+- **Each category collapsed by default** (Hick's — progressive disclosure)
+- **"Danger Zone" for destructive actions in separate red-bordered card** (Von Restorff + Common Region + Fitts's — dangerous actions far from frequent ones)
+- **Most-common settings have smart defaults pre-selected** (Tesler's + Cognitive Bias)
+- **"Reset to defaults" button at bottom** (Paradox of Active User — recovery from bad changes)
+
+**Result:** Settings went from overwhelming to navigable in one redesign pass.
+
+---
+
+### Teardown 2: Typical SaaS Pricing Page (Before → After)
+
+**Before:**
+- 3 pricing tiers in identically styled cards
+- No recommendation (user must figure out which plan)
+- All features listed for all plans (decision fatigue)
+- CTA buttons identical weight/color
+- No urgency or social proof
+
+**Laws violated:** Von Restorff (🔴 — no standout), Choice Overload (🔴), Hick's Law (🔴), Cognitive Bias (missing — no anchoring/social proof/defaults), Peak-End Rule (weak end state)
+
+**After:**
+- **Middle plan (recommended) has highlighted border + "Most Popular" badge** (Von Restorff — one pops)
+- **Left plan crossed-out original price next to current** (Cognitive Bias — anchoring)
+- **"Basic / Pro / Enterprise" → "For individuals / For teams / For companies"** (chunking by user type, not feature count)
+- **Only 3-5 differences between plans shown** (others collapsed under "Everything in Basic plus...") (Hick's — reduced comparison scope)
+- **Primary CTA larger + colored, secondary "Contact Sales" muted** (Von Restorff + Fitts's)
+- **"Join 10,000+ teams" below CTA** (Social proof — genuine)
+- **After clicking CTA: warm confirmation with setup timeline** (Peak-End Rule)
+
+**Result:** Conversion typically increases 15-30% with these changes (based on aggregated case studies from nngroup.com, conversionciencia.com).
+
+---
+
+### Teardown 3: E-commerce Checkout Flow (Before → After)
+
+**Before:**
+- All 15 fields on one page
+- Strict date/phone formatting (errors if user types "naturally")
+- No progress indicator
+- Generic "Order confirmed" text at end
+- Error messages: "Invalid input" (no guidance)
+- Loading spinner on submit, no feedback during wait
+
+**Laws violated:** Postel's (🔴), Hick's (🔴), Doherty (🔴), Working Memory (🟡), Peak-End Rule (🔴), Fitts's (🟡)
+
+**After:**
+- **3 steps:** Cart → Shipping/Payment → Confirm (Hick's + Miller's)
+- **Phone field accepts any format, displays formatted** (Postel's)
+- **Inline validation on blur** (Doherty < 400ms)
+- **Optimistic "Processing..." with confetti animation** (Doherty perceived perf + Peak-End delight)
+- **"Step 2 of 3" header summarizes cart contents** (Working Memory)
+- **Large 44px touch targets throughout** (Fitts's)
+- **Final screen: order summary + tracking link + "You might also like"** (Peak-End strong finish + Goal-Gradient)
+
+**Result:** Cart abandonment typically drops 20-35% with optimized checkout flows (Baymard Institute benchmark data).
 
 ---
 
 ## When Laws Conflict
 
-Real design involves tradeoffs. Here's how to resolve the most common tensions:
+### Fitts's vs Von Restorff
+**Tension:** Everything big (Fitts's) vs one thing pops (Von Restorff)
+**Resolution:** All elements meet **44px minimum** (Fitts's floor). Use **weight/color/position** for primary CTA only (Von Restorff ceiling). Every button reachable; only one demands attention.
 
-### Fitts's Law vs Von Restorff Effect
-**Tension:** Make everything big (Fitts's) vs make only ONE thing stand out (Von Restorff)
+### Hick's vs Postel's
+**Tension:** Limit choices (Hick's) vs accept any input (Postel's)
+**Resolution:** Present **few focused options** in UI (dropdown, presets) but accept **flexible text input** as fallback. Date picker shows calendar (few choices) + accepts typed dates in any format (liberal input).
 
-**Resolution:** All interactive elements meet minimum size (44px — Fitts's floor), but use **weight/color/position** to make only the primary CTA pop (Von Restorff ceiling). Every button is reachable; only one demands attention.
+### Jakob's vs Innovation
+**Tension:** Conventional (Jakob's) vs differentiate
+**Resolution:** **Conventional in interaction** (works as expected) + **distinctive in personality** (visual brand, voice, micro-interactions). Innovation reserved for where convention is genuinely broken.
 
-### Hick's Law vs Postel's Law
-**Tension:** Limit visible choices (Hick's) but accept any input format (Postel's)
+### Aesthetic-Usability vs Peak-End
+**Tension:** Polish everywhere (AE) vs peaks/ends only (Peak-End)
+**Resolution:** AE sets **baseline quality** (every screen meets bar). Peak-End identifies **2-3 moments** for extra investment (onboarding complete, first success, checkout confirm). Budget: **80% consistent quality, 20% peak delight.**
 
-**Resolution:** Present **few focused options** in the UI (dropdown, toggle, preset buttons) but accept **flexible text input** as fallback. Example: date picker shows calendar (few choices) but also accepts typed dates in any format (liberal input).
+### Tesler's vs Occam's
+**Tension:** Absorb complexity (Tesler's) vs keep simple (Occam's)
+**Resolution:** Allies, not enemies. **Occam's = WHAT to build** (simplest solution that works). **Tesler's = WHERE complexity lives** (code, not UI). Simple UI often needs sophisticated code (smart defaults, fuzzy parsing).
 
-### Jakob's Law vs Innovation
-**Tension:** Use conventional patterns (Jakob's) vs differentiate your product
+### Von Restorff vs Accessibility
+**Tension:** Stand out (Von Restorff) vs don't rely on color (a11y)
+**Resolution:** **Multi-dimensional emphasis.** Size + weight + position + color (not color alone). Primary button bigger, bolder, positioned prominently, AND colored differently. Win-win.
 
-**Resolution:** Be **conventional in interaction** (it works like users expect) but **distinctive in personality** (your visual brand, voice, micro-interactions). Users should recognize HOW to use your app instantly (Jakob's) while recognizing it's YOUR app (differentiation). Innovation in interaction should be reserved for places where convention is genuinely broken.
+### Cognitive Bias vs Trust
+**Tension:** Guide choices (Bias) vs don't manipulate (Trust)
+**Resolution:** Line = **transparency.** Anchoring/social proof/defaults ethical when: claims **genuine**, user **benefits**, can **opt out easily**. Unethical when: fabricated claims, self-serving guidance, hidden opt-out.
 
-### Aesthetic-Usability vs Peak-End Rule
-**Tension:** Invest in overall polish (Aesthetic-Usability) vs invest in peak/end moments (Peak-End)
+---
 
-**Resolution:** Both matter, but they serve different phases. **Aesthetic-Usability sets the baseline** — every screen meets a quality bar. **Peak-End Rule identifies the 2-3 moments** that get extra investment (onboarding complete, first success, checkout confirmation). Budget: 80% of design effort on consistent quality, 20% on peak delight moments.
+## Review Workflow
 
-### Tesler's Law vs Occam's Razor
-**Tension:** Absorb complexity in code (Tesler's) vs keep things simple (Occam's)
+Run this protocol when reviewing any UI. **Output: prioritized findings list.**
 
-**Resolution:** These are allies, not enemies. **Occam's tells you WHAT to build** (the simplest solution that works). **Tesler's tells you WHERE the complexity lives** (in your code, not the UI). Simple UI ≠ simple codebase. Often the simplest UI requires the most sophisticated code (smart defaults, fuzzy parsing, predictive input).
+### Phase 1: Gather
+1. **Screenshot/screen** the interface being reviewed
+2. **Identify user's goal-state** (what are they trying to accomplish here?)
+3. **Note the context** (desktop/mobile? first-time user? power user? stressed/rushed?)
 
-### Von Restorff Effect vs Accessibility
-**Tension:** Make elements stand out (Von Restorff) vs don't rely solely on color (a11y)
+### Phase 2: Critical Checks (🔴 stop if failing)
 
-**Resolution:** Multi-dimensional emphasis. Stand out using **size + weight + position + color** (not color alone). A primary button is bigger, bolder, positioned prominently, AND colored differently. This satisfies Von Restorff (it stands out) and WCAG (distinction isn't color-dependent). Win-win.
+| # | Check | Law | Fail = |
+|---|---|---|---|
+| C1 | Touch/click targets ≥ 44×44px? | Fitts's | Misclicks, mobile frustration |
+| C2 | Visual feedback < 400ms on interactions? | Doherty | Feels broken/unresponsive |
+| C3 | Input accepts varied formats gracefully? | Postel's | Frustrated users, support tickets |
+| C4 | Errors recoverable with clear next steps? | Postel's + Active User | Abandonment at failure |
+| C5 | Uses conventional patterns for core tasks? | Jakob's | Confusion, learning friction |
 
-### Cognitive Bias (persuasion) vs Trust
-**Tension:** Use bias to guide choices (Cognitive Bias) vs don't manipulate (trust)
+### Phase 3: Important Checks (🟡 note improvements)
 
-**Resolution:** The line is **transparency**. Using anchoring, social proof, and defaults is ethical when:
-- Claims are **genuine** (real social proof, real scarcity)
-- The **user benefits** from the guided choice (better fit, less effort)
-- The user can **opt out** easily (clear alternative, no confirmshaming)
+| # | Check | Law |
+|---|---|---|
+| I1 | ≤ 5–7 choices per view? | Miller's + Hick's |
+| I2 | Progressive disclosure for complex features? | Hick's + Tesler's |
+| I3 | Related items grouped (proximity)? Scattered = hard to scan | Proximity |
+| I4 | Clear container boundaries (regions)? | Common Region |
+| I5 | One primary emphasis per screen? | Von Restorff |
+| I6 | Information chunked/scannable? | Chunking + Cognitive Load |
+| I7 | Cross-step state visible? Drafts persisted? | Working Memory |
+| I8 | Smart defaults selected? | Tesler's + Cognitive Bias |
 
-Cross the line when: claims are fabricated, the guidance serves only your interests, or opting out is hidden/penalized.
+### Phase 4: Enhancement Checks (🔵 note as polish)
+
+| # | Check | Law |
+|---|---|---|
+| E1 | Delight moment at task completion? | Peak-End |
+| E2 | Incomplete progress visible? | Zeigarnik |
+| E3 | Strong finish to flow? | Peak-End |
+| E4 | Polished, coherent visual design? | Aesthetic-Usability |
+| E5 | Important items at list edges? | Serial Position |
+| E6 | Off-goal content minimized? | Selective Attention |
+| E7 | Keyboard shortcuts / power-user paths? | Flow |
+
+### Phase 5: Output
+
+```
+## UX Review: [Screen/Page Name]
+
+### 🔴 Critical Findings (fix first)
+1. [Law] What's wrong → Specific fix → Severity rationale
+
+### 🟡 Improvements
+1. [Law] What could be better → Suggested change
+
+### 🔵 Enhancements
+1. [Law] Delight opportunity → Suggestion
+```
 
 ---
 
 ## Stakeholder Communication
 
-Use these scripts when pushing back on bad UX decisions. Each cites evidence.
+Scripts for pushing back, adapted by audience.
 
-### "We need to add more options/features"
+### Evidence-Based (for PMs, tech leads, data-driven teams)
 
-> "Right now this screen presents N options. Hick's Law tells us decision time grows logarithmically with the number of choices — we're literally slowing users down with every addition. I'd recommend we either: (a) progressive disclose these under an Advanced section, or (b) pick smart defaults and let power users override them. We can A/B test this, but the research strongly favors fewer choices."
+**"Add more options/features":**
+> "This screen presents N options. Hick's Law shows decision time grows logarithmically with choices — we're slowing users down with every addition. Recommend: (a) progressive disclosure under Advanced, or (b) smart defaults with power-user override. We can A/B test, but research favors fewer choices."
 
-### "Make the button smaller, it looks ugly big"
+**"Make the button smaller":**
+> "Fitts's Law: target acquisition time scales with size, inversely with distance. Below 44px, error rates climb sharply on mobile. Let's keep 44px polished, or track mis-click rate. Prediction: smaller = more support tickets."
 
-> "I get the visual concern, but Fitts's Law shows that target acquisition time scales directly with size and inversely with distance. Below 44px, error rates climb sharply — especially on mobile where thumbs are imprecise. We can keep it polished at 44px, or we can track the mis-click rate and revisit. My prediction: smaller button = more support tickets."
+**"Users will read the tooltip":**
+> "Paradox of the Active User is well-documented — users don't read docs before using software. They start clicking. Whatever they need must be discoverable inline: hints, defaults, contextual help. Relying on tooltips being read = designing for a user who doesn't exist."
 
-### "Users will read the tooltip / help text"
+**"Good enough, let's ship":**
+> "Aesthetic-Usability Effect cuts both ways — users rate prettier interfaces as more usable even when they're not, masking problems in testing. Suggest: quick task-completion test (not just subjective ratings) before shipping. Risk: pretty interface users struggle with."
 
-> "The Paradox of the Active User is well-documented — users simply don't read documentation before using software. They start clicking immediately. Whatever they need to know has to be discoverable through the interface itself: inline hints, smart defaults, contextual help. If we're relying on tooltips being read, we're designing for a user who doesn't exist."
+**"Why spend time on confirmation screen?":**
+> "Peak-End Rule: people judge experiences by peak + end. This confirmation IS the lasting impression. Generic 'Thank you' = wasted opportunity. Mailchimp's 'High Five' built brand loyalty. Low effort, high impact."
 
-### "This looks good enough, let's ship it"
+**"Let users configure it":**
+> "Tesler's Law — complexity lives somewhere. Pushing it to users = cognitive load per setting exposed. Better: pick good defaults in code, expose config for the 10% who need it."
 
-> "The Aesthetic-Usability Effect cuts both ways — research shows users rate prettier interfaces as more usable even when they're not, which means beauty can mask usability problems in testing. I'd suggest we run a quick usability test specifically on task completion (not just subjective ratings) before shipping. What we don't want is a pretty interface that users struggle with."
+**"But competitor does it this way":**
+> "That's evidence FOR Jakob's Law, not against. Their users learned patterns there. We leverage that mental model (lower curve, faster value) or fight it (novelty cost). What specific advantage does our different approach give the user?"
 
-### "Why spend time on the success/confirmation screen?"
+### Metrics-Focused (for product managers, founders, growth teams)
 
-> "The Peak-End Rule shows that people judge experiences primarily by how they felt at the peak and at the end. This confirmation screen IS the end of the flow — it's the lasting impression. A generic 'Thank you' is a wasted opportunity for delight and for guiding next steps. Mailchimp built brand loyalty partly on their 'High Five' screen. It's low effort, high impact."
+**"Add more options":**
+> "Every option we add has measurable cost. Our data shows [X]% drop-off per additional field in this flow. Hick's Law isn't just theory — it predicts our specific conversion decline. Test: hide half these options behind 'Advanced' and measure completion rate change."
 
-### "Just let users configure it themselves"
+**"Make the button smaller":**
+> "Smaller button = predicted [X]% increase in mis-taps based on Fitts's research. On mobile that means accidental form submits, wrong-page navigations, frustrated users. Cost of keeping it 44px: zero. Cost of shrinking: support volume + rage-taps."
 
-> "Tesler's Law — the Law of Conservation of Complexity. The complexity has to live somewhere. Right now we're pushing it to the user with 'go configure it.' Every setting we expose is cognitive load we're adding. I'd recommend we pick good defaults, absorb the complexity in our code, and only expose configuration for the 10% who actually need it."
+**"Good enough, ship it":**
+> "I hear 'ship it.' Question: will pretty-but-clunky cost us in retention? Aesthetic-Usability Effect means users give us credit now but may churn 2-3 weeks from frustration. Suggest: 1-week shadow test — watch 5 real users attempt core tasks. If >2 struggle on the same thing, fix it before broad ship."
 
-### "But [competitor] does it this way"
+**"Why spend time on confirmation screen?":**
+> "This screen = final touchpoint before user leaves flow. Peak-End research shows this moment weights disproportionately in overall satisfaction. Our NPS correlates more with checkout-complete experience than with mid-funnel experience. Investment here has outsized ROI."
 
-> "That's actually evidence FOR following Jakob's Law, not against it. Our users spend most of their time on other sites — including our competitor's. They've learned how things work there. We can either leverage that existing mental model (lower learning curve, faster time-to-value) or fight it (novelty cost, potential confusion). What specific advantage does our different approach give the user?"
+### Standards-Based (for clients, enterprise, regulated industries)
 
----
+**"Add more options":**
+> "Industry standard for [this type of form] is [N] fields per step (per Nielsen Norman Group / Interaction Design Foundation benchmarks). We're currently at [2N]. Recommendation: split into steps following established patterns. This aligns with WCAG 2.1 cognitive accessibility guidelines too."
 
-## Prioritized UX Review Checklist
+**"Make the button smaller":**
+> "WCAG 2.1 Target Size Guidelines (2.5.8) recommend minimum 44×44px CSS pixels for touch targets. iOS HIG and Material Design both mandate this. Going below creates accessibility non-compliance risk and fails standard heuristic evaluation."
 
-Run through this when reviewing any UI. **Check in severity order — stop at the first critical finding and flag it.**
-
-### 🔴 Critical (Causes errors, abandonment, frustration)
-
-- [ ] **Touch/click targets ≥ 44×44px** (Fitts's Law) — smaller = misclicks, especially mobile
-- [ ] **Visual feedback < 400ms** on every interaction (Doherty Threshold) — slower = feels broken
-- [ ] **Input accepts varied formats gracefully** (Postel's Law) — rigid input = frustrated users
-- [ ] **Errors are recoverable with clear next steps** (Postel's + Active User) — dead ends = abandonment
-- [ ] **Uses conventional patterns for core interactions** (Jakob's Law) — novel patterns confuse
-
-### 🟡 Important (Slows users down, reduces completion rates)
-
-- [ ] **No more than 5–7 choices per view** (Miller's + Hick's) — more = decision fatigue
-- [ ] **Progressive disclosure for complex features** (Hick's + Tesler's) — wall of options = overwhelmed
-- [ ] **Related items grouped by proximity** (Proximity) — scattered = harder to scan
-- [ ] **Clear container boundaries define regions** (Common Region) — no boundaries = no structure
-- [ ] **One primary emphasis per screen** (Von Restorff) — everything competes = nothing wins
-- [ ] **Information chunked into scannable groups** (Chunking + Cognitive Load) — flat = overload
-- [ ] **Cross-step state visible; drafts persisted** (Working Memory) — lost context = restart cost
-- [ ] **Smart defaults selected** (Tesler's + Cognitive Bias) — blank slate = more work
-
-### 🔵 Nice-to-have (Delight, polish, differentiation)
-
-- [ ] **Delight moment at task completion** (Peak-End Rule) — memorable positive peak
-- [ ] **Incomplete progress visible** (Zeigarnik) — drives return and completion
-- [ ] **Strong finish to every flow** (Peak-End) — lasting impression
-- [ ] **Polished, coherent visual design** (Aesthetic-Usability) — perceived quality boost
-- [ ] **Important items at list start/end** (Serial Position) — remembered better
-- [ ] **Goal-state optimized** (Selective Attention) — off-goal content minimized
-- [ ] **Keyboard shortcuts / power-user features** (Flow) — expert users fly
+**"Competitor does it differently":**
+> "Our competitors follow established conventions because those conventions are based on decades of usability research (Nielsen Norman, Interaction Design Foundation, W3C WAI-AG). Deviating from convention requires justification beyond differentiation — we need measurable user benefit to offset the learning cost we're imposing."
 
 ---
 
 ## Accessibility Overlay
 
-All laws have accessibility implications. Here are the key intersections:
-
-| Law | Accessibility Consideration |
+| Law | a11y Consideration |
 |---|---|
-| **Fitts's Law** | Large targets help motor-impaired and elderly users. 44px minimum is also an a11y best practice. |
-| **Von Restorff** | Never rely on color alone for emphasis. Combine with size, weight, shape, position, text. |
-| **Doherty Threshold** | Respect `prefers-reduced-motion`. Replace animations with instant transitions for users who need them. |
-| **Miller's / Cognitive Load** | Screen reader users benefit MORE from chunking and simplification than sighted users. Cognitive disabilities magnify extraneous load. |
-| **Postel's Law** | Assistive tech compatibility IS "liberal in what you accept." Accept keyboard-only navigation, screen reader input, switch devices. |
-| **Hick's Law** | Cognitive accessibility: users with attention disorders are hit hardest by choice overload. Even more reason to limit options. |
-| **Color Contrast** (cross-cutting) | All visual laws (Similarity, Von Restorff, Common Region) must meet WCAG AA contrast ratios (4.5:1 normal text, 3:1 large text). |
+| **Fitts's** | Large targets help motor-impaired + elderly. 44px = a11y best practice. |
+| **Von Restorff** | Never color-alone emphasis. Size + weight + shape + position + text. |
+| **Doherty** | `prefers-reduced-motion`. Replace animations with instant transitions. |
+| **Miller's / Cognitive Load** | Screen reader users benefit MORE from chunking/simplification. Cognitive disabilities magnify extraneous load. |
+| **Postel's** | Assistive tech compatibility = "liberal in what you accept." Keyboard-only, screen reader, switch devices. |
+| **Hick's** | Cognitive a11y: attention disorders hit hardest by choice overload. Even more reason to limit. |
+| **Color Contrast** (cross-cutting) | All visual laws must meet **WCAG AA**: 4.5:1 normal text, 3:1 large text. Test with Stark Contrast or axe DevTools. |
 
 ---
 
 ## References
 
-- [lawsofux.com](https://lawsofux.com) — Jon Yablonski's complete collection (primary source)
+- [lawsofux.com](https://lawsofux.com) — Jon Yablonski (primary source)
 - [Nielsen Norman Group](https://www.nngroup.com/) — Deep-dive research articles
 - *Designing with the Mind in Mind* — Jeff Johnson
 - *100 Things Every Designer Needs to Know About People* — Susan Weinschenk
-- [W3C WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/) — Accessible pattern implementations
+- [W3C WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/) — Accessible patterns
+- [Baymard Institute](https://baymard.com/) — Checkout UX benchmarks
+- [Interaction Design Foundation](https://www.interaction-design.org/) — Course material & glossary
