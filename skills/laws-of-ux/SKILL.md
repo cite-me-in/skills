@@ -1,5 +1,5 @@
 ---
-name: Laws of UX
+name: laws-of-ux
 description: "Apply evidence-based UX psychology laws when building web applications and interfaces. Use this skill whenever designing or reviewing UI/UX for web apps, dashboards, landing pages, forms, navigation systems, or any user-facing interface. Also triggers on: 'UX review', 'usability', 'user experience design', 'make this more usable', 'improve UX', 'UX patterns', 'interface design', 'is this good UX', 'accessibility and usability', or any mention of specific UX laws (Fitts's Law, Hick's Law, Jakob's Law, etc.)."
 ---
 
